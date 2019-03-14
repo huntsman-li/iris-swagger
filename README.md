@@ -1,4 +1,4 @@
-# gin-swagger
+# iris-swagger
 
 iris middleware to automatically generate RESTful API documentation with Swagger 2.0.
 
@@ -15,7 +15,7 @@ $ go get -u github.com/swaggo/swag/cmd/swag
 ```sh
 $ swag init
 ```
-4.Download [gin-swagger](https://github.com/huntsman-li/iris-swagger) by using:
+4.Download [iris-swagger](https://github.com/huntsman-li/iris-swagger) by using:
 ```sh
 $ go get -u github.com/huntsman-li/iris-swagger
 $ go get -u github.com/huntsman-li/iris-swagger/swaggerFiles
@@ -23,7 +23,7 @@ $ go get -u github.com/huntsman-li/iris-swagger/swaggerFiles
 And import following in your code:
 
 ```go
-import "github.com/huntsman-li/iris-swagger" // gin-swagger middleware
+import "github.com/huntsman-li/iris-swagger" // iris-swagger middleware
 import "github.com/huntsman-li/iris-swagger/swaggerFiles" // swagger embed files
 
 ```
@@ -58,10 +58,10 @@ import (
 func main() {
 	r := iris.New()
     
-    // use ginSwagger middleware to 
-	r.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
+    // use iris-swagger middleware to
+	r.GET("/swagger/*any", swagger.WrapHandler(swaggerFiles.Handler))
 
-	r.Run()
+	r.Run(iris.Addr(":8080"))
 }
 ```
 
@@ -101,8 +101,8 @@ import (
 func main() {
 	r := iris.New()
     
-    // use ginSwagger middleware to 
-	r.Get("/swagger/*any", iris-swagger.DisablingWrapHandler(swaggerFiles.Handler, "NAME_OF_ENV_VARIABLE"))
+    // use swagger middleware to
+	r.Get("/swagger/*any", swagger.DisablingWrapHandler(swaggerFiles.Handler, "NAME_OF_ENV_VARIABLE"))
 
 	r.Run()
 }

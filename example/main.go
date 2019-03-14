@@ -1,11 +1,11 @@
 package main
 
 import (
-	"github.com/gin-gonic/gin"
-	"github.com/swaggo/gin-swagger"
-	"github.com/swaggo/gin-swagger/swaggerFiles"
+	"github.com/huntsman-li/iris-swagger"
+	"github.com/huntsman-li/iris-swagger/swaggerFiles"
+	"github.com/kataras/iris"
 
-	_ "github.com/swaggo/gin-swagger/example/docs"
+	_ "github.com/huntsman-li/iris-swagger/example/docs"
 )
 
 // @title Swagger Example API
@@ -23,9 +23,9 @@ import (
 // @host petstore.swagger.io
 // @BasePath /v2
 func main() {
-	r := gin.New()
+	r := iris.New()
 
-	r.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
+	r.Get("/swagger/*any", swagger.WrapHandler(swaggerFiles.Handler))
 
-	r.Run()
+	r.Run(iris.Addr(":8080"))
 }

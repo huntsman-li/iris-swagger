@@ -2,7 +2,7 @@ package api
 
 import (
 	"fmt"
-	"github.com/gin-gonic/gin"
+	"github.com/kataras/iris"
 	"github.com/swaggo/swag/example/basic/web"
 )
 
@@ -16,7 +16,7 @@ import (
 // @Failure 400 {object} web.APIError "We need ID!!"
 // @Failure 404 {object} web.APIError "Can not find ID"
 // @Router /testapi/get-string-by-int/{some_id} [get]
-func GetStringByInt(c *gin.Context) {
+func GetStringByInt(c *iris.Context) {
 	err := web.APIError{}
 	fmt.Println(err)
 }
@@ -31,7 +31,7 @@ func GetStringByInt(c *gin.Context) {
 // @Failure 400 {object} web.APIError "We need ID!!"
 // @Failure 404 {object} web.APIError "Can not find ID"
 // @Router /testapi/get-struct-array-by-string/{some_id} [get]
-func GetStructArrayByString(c *gin.Context) {
+func GetStructArrayByString(c *iris.Context) {
 
 }
 
